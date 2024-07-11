@@ -1,0 +1,98 @@
+# Hospital Management System
+
+This Hospital Management System project is built using Core Java and SQL. It includes classes for managing patients, doctors, and the overall hospital operations.
+
+## Features
+
+### Patient Management
+
+- Add, update, and delete patient records.
+- View patient details and medical history.
+- Track patient appointments.
+
+### Doctor Management
+
+- View doctor profiles and their schedules.
+- Assign doctors to patients for there appointments.
+
+### Hospital Operations
+
+- Driver Class Connection with Database
+- Main Menu shows in this class
+- Exit From System
+
+### Database
+
+- We have 3 Tables
+    1. Appointment:- Appintment Id, Patient Id, Appointment Date.
+    2. Doctors- It includes ID, Name and Specialization.
+    3. Patient:- It includes ID, Name, Age and Gender.
+
+## Technologies Used
+
+- **Core Java**: For building the application logic.
+- **SQL**: For database management and storage of records.
+
+## Getting Started
+
+1. Set up the development environment by installing Java and SQL.
+2. Clone the project repository.
+3. Configure the database connection settings.
+4. Run the application and start managing hospital operations efficiently.
+- Database Commands
+    
+    ```sql
+    // 1) Creating Database
+    create database hospital;
+    
+    // 2) Use Database
+    use hospital;
+    
+    // 3) Creating Patient Table
+    create table patients (
+        -> id INT AUTO_INCREMENT PRIMARY KEY,
+        -> name VARCHAR(255) NOT NULL,
+        -> age INT NOT NULL,
+        -> gender VARCHAR(10) NOT NULL
+        -> );
+        
+    // 4) Creating Doctors Table    
+        Create table doctors(
+        -> id INT AUTO_INCREMENT PRIMARY KEY,
+        -> name VARCHAR(255) NOT NULL,
+        -> specialization VARCHAR(255) NOT NULL
+        -> );
+     
+    // 5) Creating Appointments Table   
+    		Create table appointments(
+        -> id INT AUTO_INCREMENT PRIMARY KEY,
+        -> patient_id INT NOT NULL,
+        -> Doctor_id INT NOT NULL,
+        -> appointment_date DATE NOT NULL,
+        -> FOREIGN KEY (patient_id) REFERENCES patients(id),
+        -> FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+        -> );
+        
+    mysql> show tables;
+    +--------------------+
+    | Tables_in_hospital |
+    +--------------------+
+    | appointments       |
+    | doctors            |
+    | patients           |
+    +--------------------+
+    
+    mysql> INSERT INTO doctors(name,specialization) values ("Pankaj Jain","Physician");
+    Query OK, 1 row affected (0.01 sec)
+    
+    mysql> INSERT INTO doctors(name,specialization) values ("Harshilt Patil","NeuroSurgeon");
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> SELECT * FROM Doctors;
+    +----+----------------+----------------+
+    | id | name           | specialization |
+    +----+----------------+----------------+
+    |  1 | Pankaj Jain    | Physician      |
+    |  2 | Harshilt Patil | NeuroSurgeon   |
+    +----+----------------+----------------+
+    ```

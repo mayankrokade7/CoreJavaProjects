@@ -160,7 +160,7 @@ public class HospitalManagementSystem {
         }
     }
     
-    //Deleting Appointment
+    //Deleting Appointment Feature
     public static void deleteAppointment(Connection connection, Scanner scanner) {
         System.out.print("Enter Doctor ID to delete appointments: ");
         int doctorId = scanner.nextInt();
